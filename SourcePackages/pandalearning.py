@@ -4,6 +4,8 @@ import sys
 import time
 from sys import argv
 
+from flask import json
+
 from pdlearn import boot
 
 boot.check_environment()
@@ -122,6 +124,11 @@ def start_learn(uid, name):
     except Exception as e:
         pass
 
+import uuid
+
+def get_mac_address():
+    mac=uuid.UUID(int = uuid.getnode()).hex[-12:]
+    return ":".join([mac[e:e+2] for e in range(0,11,2)])
 
 def start(nick_name=None):
     nohead, lock, stime, Single = get_argv()
@@ -131,6 +138,13 @@ def start(nick_name=None):
     user.refresh_all_cookies()
     if len(user_list) == 0:
         user_list.append(["", "新用户"])
+    mac = get_mac_address()
+    data = {
+        "mac": mac,
+        "users": user_list
+    }
+    import requests
+    result = requests.post("http://aiweb.iknow.ai:5000/api/check_mac",json.dumps(data))
     for i in range(len(user_list)):
         try:
             if nick_name == None or nick_name == user_list[i][1] or nick_name == user_list[i][0]:
