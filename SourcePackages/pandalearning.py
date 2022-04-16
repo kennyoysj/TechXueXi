@@ -7,17 +7,17 @@ from sys import argv
 from pdlearn import boot
 
 boot.check_environment()
-try:
+# try:
     # 在此处导入所有 pdlearn 内的模块
-    from pdlearn import globalvar as gl
-    from pdlearn import color, score, threads, user, version
-    from pdlearn.answer_question import daily, weekly, zhuanxiang
-    from pdlearn.article_video import article, video
-    from pdlearn.config import cfg_get
-    from pdlearn.mydriver import Mydriver
-    from pdlearn.score import show_score, show_scorePush
-except ImportError as e:
-    boot.try_pip_install(exception=e)
+from pdlearn import globalvar as gl
+from pdlearn import color, score, threads, user, version
+from pdlearn.answer_question import daily, weekly, zhuanxiang
+from pdlearn.article_video import article, video
+from pdlearn.config import cfg_get
+from pdlearn.mydriver import Mydriver
+from pdlearn.score import show_score, show_scorePush
+# except ImportError as e:
+#     boot.try_pip_install(exception=e)
 
 
 def get_argv():
@@ -190,15 +190,10 @@ def add_user(chat_id=None):
 if __name__ == '__main__':
     if(cfg_get('display.banner') != False):  # banner文本直接硬编码，不要放在conf中
         print("=" * 60 +
-              '\n    我们的网站，GitHub 等页面已经被中国大陆的浏览器加入黑名单，请用谷歌浏览器 chrome 打开我们的站点。' +
-              '\n    科技强 guo 官方网站：https://techxuexi.js.org' +
-              '\n    Github地址：https://github.com/TechXueXi' +
               '\n使用本项目，必须接受以下内容，否则请立即退出：' +
               '\n    - TechXueXi 仅额外提供给“爱党爱 guo ”且“工作学业繁重”的人' +
-              '\n    - 项目开源协议 LGPL-3.0' +
-              '\n    - 不得利用本项目盈利' +
-              '\n另外，我们建议你参与一个维护劳动法的项目：' +
-              '\nhttps://996.icu/ 或 https://github.com/996icu/996.ICU/blob/master/README_CN.md')
+              '\n    - 项目开源协议 LGPL-3.0'
+              )
     print("=" * 60, '''\nTechXueXi 现支持以下模式（答题时请值守电脑旁处理少部分不正常的题目）：''')
     print(cfg_get('base.ModeText', "") + '\n' + "=" * 60)
     # 模式提示文字请在 ./config/default_template.conf 处修改。

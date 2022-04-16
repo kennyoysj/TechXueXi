@@ -14,7 +14,7 @@ ENV Pushmode=1
 ENV islooplogin=False
 ENV CRONTIME="30 9 * * *"
 # RUN rm -f /xuexi/config/*; ls -la
-COPY requirements.txt /xuexi/requirements.txt
+COPY SourcePackages/pdlearn/historical/requirements.txt /xuexi/requirements.txt
 COPY run.sh /xuexi/run.sh 
 COPY start.sh /xuexi/start.sh 
 COPY supervisor.sh /xuexi/supervisor.sh

@@ -288,7 +288,7 @@ class Mydriver:
 
     def set_cookies(self, cookies):
         try:
-            # 解决Chrome 90版本无法运行的问题[https://github.com/TechXueXi/TechXueXi/issues/78]
+            # 解决Chrome 90版本无法运行的问题
             for cookie in cookies:
                 cookie_domain = cookie["domain"]
                 # fix cookie domain `.pc.xuexi.cn` caused refresh fail
